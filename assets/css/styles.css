@@ -1,0 +1,79 @@
+/*RESET CSS*/
+*{
+    border: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --jet-color: #2a2b2a;
+    --ruby-color: #D81159;
+    --turq-color: #0affed;
+    --mag-color: #f9f5ff;
+    --lem-color: #faf33e;
+}
+
+html{
+    background-color: var(--jet-color);
+}
+
+body {
+    color: var(--mag-color);
+    font-family: 'Nunito', Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding-top: 80px;
+}
+
+a{
+    color: var(--turq-color);
+}
+
+/* HEADER */
+.header{
+    box-shadow: 0 3px 4px var(--ruby-color);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    background: var(--jet-color);
+    top: 0;
+    left: 0;
+}
+.header a {
+    text-decoration: none;
+    color: inherit;
+}
+.menu-container{
+    display: flex;
+    align-items: center;
+
+}
+#bttn-cart{
+    font-size: 26px;
+    background: none;
+    color: var(--ruby-color);
+    width: 60px;
+    height: 60px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.badge{
+    background: var(--jet-color);
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    border: 1px solid var(--ruby-color);
+    color: var(--mag-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100%;
+    bottom: 5px;
+    right: 5px;
+    position: absolute;
+    
+}
