@@ -1,0 +1,7 @@
+{
+    "window.zoomLevel": -1,
+    "emmet.includeLanguages": {
+        "javascript": "javascriptreact",
+        "typescript": "typescriptreact"
+    }
+}

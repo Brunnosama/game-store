@@ -1,1 +1,1 @@
-# game-store
+# whazaa-game-store
