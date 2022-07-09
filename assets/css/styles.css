@@ -67,6 +67,7 @@ a {
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
 }
 
 .badge {
@@ -83,6 +84,12 @@ a {
     bottom: 5px;
     right: 5px;
     position: absolute;
+}
+@media (min-width: 992px) {
+    .header .logo {
+        height: 100px;
+        width: auto;
+    }
 }
 
 /* CONTAINER */
