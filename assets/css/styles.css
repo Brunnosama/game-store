@@ -187,9 +187,11 @@ h3 {
     margin-top: 5px;
     margin-bottom: 10px;
 }
+
 .card-content .btn {
     margin-top: auto;
 }
+
 /* BUTTON */
 .btn {
     text-align: center;
@@ -231,5 +233,47 @@ h3 {
 @media (min-width: 992px) {
     .products-grid {
         grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+}
+
+/* FOOTER */
+.footer {
+    background-color: var(--mag-color);
+    color: var(--jet-color);
+    text-align: center;
+    margin-top: 50px;
+    padding: 25px 0;
+}
+
+.footer p {
+    font-size: 18px;
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.footer a {
+    color: inherit;
+    font-size: 24px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.footer .fa-whatsapp-square {
+    color: var(--ruby-color);
+    font-size: 40px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+    .footer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+    }
+    .footer p {
+        margin-right: 40px;
+        margin-bottom: 0;
     }
 }
