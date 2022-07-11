@@ -9,9 +9,11 @@
 :root {
     --jet-color: #2a2b2a;
     --ruby-color: #D81159;
+    --rblg-color: #f95b95;
     --turq-color: #0affed;
     --mag-color: #f9f5ff;
     --lem-color: #faf33e;
+    --tklg-color: #b1fffa; 
 }
 
 html {
@@ -207,14 +209,19 @@ h4,
     font-weight: 600;
     border-radius: 5px;
     cursor: pointer;
-    padding: 10px 15px;
+    padding: 9px 15px;
+    transition: all 0.3s linear;
 }
 
 .bttn-main {
     background-color: var(--ruby-color);
     color: var(--mag-color);
+    border: 1px solid var(--ruby-color);
 }
-
+.bttn-main:hover {
+    background-color: var(--rblg-color);
+    border-color: var(--rblg-color);
+}
 .bttn-main-outline {
     color: var(--ruby-color);
     border: 1px solid var(--ruby-color);
@@ -298,7 +305,7 @@ h4,
     padding: 15px;
     display: flex;
     flex-direction: column;
-    display: none;
+    /* display: none; */
     /* ALTERAR NO FUTURO */
 
 }
@@ -346,7 +353,13 @@ h4,
 
 #full-cart .bttn-main {
     background-color: var(--turq-color);
+    border: 1px solid var(--turq-color);
     color: var(--jet-color);
+}
+#full-cart .bttn-main:hover {
+    background-color: var(--tklg-color);
+    border-color: var(--tklg-color);
+    cursor: pointer;
 }
 
 .cart-item {
@@ -392,6 +405,13 @@ h4,
     color: var(--turq-color);
     font-size: 18px;
 }
+@media (min-width: 768px) {
+    .cart-sidebar {
+        width: 428px;
+        box-shadow: -3px 0 6px rgba(10, 255, 237, .50);
+
+    }
+}
 
 /* FORMS */
 .form-input {
@@ -401,11 +421,4 @@ h4,
     color: var(--mag-color);
     font-size: 16px;
     padding: 9px;
-}
-@media (min-width: 768px) {
-    .cart-sidebar {
-        width: 428px;
-        box-shadow: -3px 0 6px rgba(10, 255, 237, .50);
-
-    }
 }
