@@ -1,12 +1,13 @@
 //ABRE SIDEBAR
+
+const cartSidebar = document.querySelector('.cart-sidebar') /* var declarada globalmente */
+
 function openSidebar () {
-    var cartSidebar = document.querySelector('.cart-sidebar')
     cartSidebar.classList.add('cart-sidebar-open')
 }
 
 //FECHA SIDEBAR
 function closeSidebar () {
-    var cartSidebar = document.querySelector('.cart-sidebar')
     cartSidebar.classList.remove('cart-sidebar-open')
 }
 
