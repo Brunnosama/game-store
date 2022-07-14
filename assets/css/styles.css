@@ -303,11 +303,13 @@ h4,
     height: 100vh;
     background-color: var(--jet-color);
     padding: 15px;
-    display: flex;
+    display: none;
     flex-direction: column;
     /* display: none; */
     /* ALTERAR NO FUTURO */
-
+}
+.cart-sidebar-open {
+    display: flex;
 }
 
 #bttn-close-cart {
@@ -316,6 +318,7 @@ h4,
     background-color: transparent;
     padding: 5px;
     align-self: flex-end;
+    cursor: pointer;
 }
 
 #empty-cart {
