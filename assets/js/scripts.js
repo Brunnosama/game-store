@@ -14,8 +14,9 @@ function closeSidebar () {
 // document.getElementById('bttn-cart').onclick = openSidebar 
 // no ex acima apenas uma função pode ser executada por vez
 
-// document.getElementById('bttn-cart').addEventListener('click', openSidebar) 
-// vc ainda pode jogar a funcao direto (e nem precisa nomear)
+/* document.getElementById('bttn-cart').addEventListener('click', function () {
+    cartSidebar.classList.add('cart-sidebar-open')) */
+// acima vc pode jogar a funcao direto (e nem precisa nomear)
 
 const bttnOpenCart = document.getElementById('bttn-cart')
 //pode criar uma função com o caminho para melhorar a organização
