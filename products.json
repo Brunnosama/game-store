@@ -1,0 +1,92 @@
+{
+    "groups": [
+        {
+            "id": "0d18e2c8-2331-4076-a8db-c43b8a3b216a",
+            "name": "Jogos",
+            "products": [
+                {
+                    "id": "5513e593-ebc7-4bf2-bb7a-a356411f24cb",
+                    "name": "Horizon Forbidden West",
+                    "image": "assets/img/produtos/jogos/ps5-horizon-forbidden-west.jpg",
+                    "imgAlt": "Horizon Forbidden West, para Playstation 5",
+                    "price": 270
+                },
+                {
+                    "id": "c949ac75-69ae-41c9-95af-fc6c7a9da9b6",
+                    "name": "Spider-Man Miles Morales",
+                    "image": "assets/img/produtos/jogos/ps5-spider-man-miles-morales.jpg",
+                    "imgAlt": "Spider Man Miles Morales, para Playstation 5",
+                    "price": 250
+                },
+                {
+                    "id": "c3f1a583-016b-4668-ae71-c9de0a1fd2cd",
+                    "name": "Returnal",
+                    "image": "assets/img/produtos/jogos/ps5-returnal.jpg",
+                    "imgAlt": "Returnal, para Playstation 5",
+                    "price": 200
+                },
+                {
+                    "id": "30705717-854a-489e-a3a6-fb338c32492a",
+                    "name": "Uncharted Coleção Legado dos Ladrões Remasterizado",
+                    "image": "assets/img/produtos/jogos/ps5-uncharted-colection-remasterizado.jpg",
+                    "imgAlt": "Uncharted Coleção Legado dos Ladrões Remasterizado, para Playstation 5",
+                    "price": 200
+                }
+            ]
+        },
+        {
+            "id": "ea126a2e-7fd3-432f-bc3e-a21cb7f173b7",
+            "name": "Acessórios",
+            "products": [
+                {
+                    "id": "535a96ec-08b1-4a27-9b5d-27e3d268bd61",
+                    "name": "Controle sem fio DualSense",
+                    "image": "assets/img/produtos/acessorios/ps5-controle-dualsense-branco.jpg",
+                    "imgAlt": "Controle sem fio DualSense para Playstation 5",
+                    "price": 400
+                },
+                {
+                    "id": "641f3f08-3b7d-49fa-8bb3-c3fd2095f57f",
+                    "name": "Câmera Full HD PS5",
+                    "image": "assets/img/produtos/acessorios/ps5-camera-full-hd.jpg",
+                    "imgAlt": "Câmera Full HD para Playstation 5",
+                    "price": 295
+                },
+                {
+                    "id": "b6c5e1a2-6485-4ee3-8d9a-3766d6937d87",
+                    "name": "Headset sem fio PULSE 3D",
+                    "image": "assets/img/produtos/acessorios/ps5-headset-sem-fio-pulse-3d.jpg",
+                    "imgAlt":"Headset sem fio Pulse 3D para Playstation 5",
+                    "price": 483
+                },
+                {
+                    "id": "fb3a040c-15a4-4a69-8860-eeb086fb3480",
+                    "name": "Memória SSD WD BLACK SN850 1TB",
+                    "image": "assets/img/produtos/acessorios/ps-wd-black-sn850-ssd-1tb.jpg",
+                    "imgAlt":"Memória SSD WD BLACK SN850 de 1 Terabyte para Playstation 5",
+                    "price": 920
+                }
+            ]
+        },
+        {
+            "id": "5b95c54f-15f4-452d-88dd-aee97ffa77b8",
+            "name": "Consoles",
+            "products": [
+                {
+                    "id": "73f0ad09-7321-472b-abff-fe8623a403c4",
+                    "name": "Console PlayStation 5 Edição Digital",
+                    "image": "assets/img/produtos/consoles/ps5-console-edicao-digital.jpg",
+                    "imgAlt":"Console PlayStation 5 Edição Digital",
+                    "price": 4599
+                },
+                {
+                    "id": "643c43ed-2201-411d-b089-75922fc436cd",
+                    "name": "Console Playstation 5",
+                    "image": "assets/img/produtos/consoles/ps5-console.jpg",
+                    "imgAlt":"Console Playstation 5",
+                    "price": 4899
+                }
+            ]
+        }
+    ]
+}
