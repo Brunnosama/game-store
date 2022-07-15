@@ -54,16 +54,16 @@
                 },
                 {
                     "id": "b6c5e1a2-6485-4ee3-8d9a-3766d6937d87",
-                    "name": "Headset sem fio PULSE 3D",
+                    "name": "Headset sem fio Pulse 3D",
                     "image": "assets/img/produtos/acessorios/ps5-headset-sem-fio-pulse-3d.jpg",
                     "imgAlt":"Headset sem fio Pulse 3D para Playstation 5",
                     "price": 483
                 },
                 {
                     "id": "fb3a040c-15a4-4a69-8860-eeb086fb3480",
-                    "name": "Memória SSD WD BLACK SN850 1TB",
+                    "name": "Memória SSD WD_Black SN850 1TB",
                     "image": "assets/img/produtos/acessorios/ps-wd-black-sn850-ssd-1tb.jpg",
-                    "imgAlt":"Memória SSD WD BLACK SN850 de 1 Terabyte para Playstation 5",
+                    "imgAlt":"Memória SSD Wd Black SN850 de 1 Terabyte para Playstation 5",
                     "price": 920
                 }
             ]
