@@ -35,31 +35,44 @@ const fetchProducts = () => {
     fetch('http://127.0.0.1:5500/products.json')
         .then(response => response.json())
         .then(body => {
-            
+
             groupsRootEl.innerHTML = ''
             body.groups.forEach((group) => {
                 // groupsRootEl.innerHTML = groupsRootEl.innerHTML + group.name 
                 /*sempre que a variável for receber ela mesma, pode colocar o sinal de '+' antes do '=' para concatenar */
                 let groupHTML = `<section><h2>${group.name}</h2><div class="products-grid">`
                 group.products.forEach(product => {
-                    groupHTML += 
-                `<article class="card">
+                    groupHTML +=
+                        `<article class="card">
                     <img src="${product.image}" alt="${product.imgAlt}" width="190" height="170" />
                     <div class="card-content">
                         <h3>${product.name}</h3>
-                        <p class="price">R$ ${product.price.toLocaleString('pt-br', {minimumFractionDigits: 2})}</p>
-                        <button class="bttn bttn-main bttn-block">Comprar</button>
+                        <p class="price">R$ ${product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</p>
+                        <button class="bttn bttn-main bttn-block bttn-add-cart" data-id="${product.id}">Adicionar</button>
                     </div>
                 </article>`
                 })
                 groupHTML += '</div></section>'
                 groupsRootEl.innerHTML += groupHTML
             })
-            //    console.log(body)
+            setupAddToCart()
         })
         .catch((error) => {
             console.log(error)
             groupsRootEl.innerHTML = '<p class="alert-error"><strong>Desculpe, houve uma falha ao carregar nossos produtos. Por favor, verifique sua conexão e recarregue a página.</strong></p>'
         })
 }
-fetchProducts() 
+fetchProducts()
+
+//PRODUTOS NO CARRINHO
+
+const productsCart = []
+const addToCart = (event) => {
+    console.log('Vai Adicionar', event.target.dataset)
+}
+const setupAddToCart = () => {
+    const bttnAddCartEls = document.querySelectorAll('.bttn-add-cart')
+    bttnAddCartEls.forEach((bttn) => {
+        bttn.addEventListener('click', addToCart)
+    })
+}
