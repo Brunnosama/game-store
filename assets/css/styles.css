@@ -250,7 +250,7 @@ h4,
     display: block;
     text-align: center;
     color: var(--ruby-color);
-    font-size: 30px;
+    font-size: 7.5vmin;
     margin: 30px 0;
     --fa-animation-duration: 1.5s;
 }
@@ -416,6 +416,7 @@ h4,
     align-items: center;
     background: transparent;
     align-self: center;
+    cursor: pointer;
 }
 
 .cart-item input {

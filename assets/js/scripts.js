@@ -32,7 +32,7 @@ addMore.addEventListener('click', closeSidebar)
 
 const fetchProducts = () => {
     const groupsRootEl = document.querySelector('#groups-root')
-    fetch('http://127.0.0.1:5500/products.json')
+    fetch('/products.json')
         .then(response => response.json())
         .then(body => {
 
