@@ -16,7 +16,7 @@ function closeSidebar() {
 
 /* document.getElementById('bttn-cart').addEventListener('click', function () {
     cartSidebar.classList.add('cart-sidebar-open')) */
-// acima vc pode jogar a funcao direto (e nem precisa nomear)
+// acima vc pode jogar a função direto (e nem precisa nomear)
 
 const bttnOpenCart = document.getElementById('bttn-cart')
 //pode criar uma função com o caminho para melhorar a organização
@@ -78,12 +78,7 @@ const addToCart = (event) => {
     const product = event.target.dataset
     /*Veja se o product está no array: Se não estiver, adicione ao array. Se já estiver, aumente o valor de qty*/
 
-    const index = productsCart.findIndex((item) => {
-        if (item.id == product.id) {
-            return true
-        }
-        return false
-    })
+    const index = productsCart.findIndex((item) => item.id == product.id)
     if (index == -1) {
         productsCart.push({
             ...product,
@@ -97,14 +92,9 @@ const addToCart = (event) => {
     handleCartUpdate()
 }
 /* function aponta para onde ela é declarada/chamada */
-function removeOfCart () {
-    const {id} = this.dataset
-    productsCart = productsCart.filter ((product) => {
-        if (product.id != id) {
-            return true
-        }
-        return false
-    })
+function removeOfCart() {
+    const { id } = this.dataset
+    productsCart = productsCart.filter((product) => product.id != id)
     handleCartUpdate()
 }
 
@@ -128,9 +118,7 @@ const handleCartUpdate = () => {
     const fullCartEl = document.querySelector('#full-cart')
     const cartItensParent = fullCartEl.querySelector('ul')
     const cartTotalValueEl = document.querySelector('#cart-total-value')
-    const totalCart = productsCart.reduce((total, item) => {
-        return total + item.qty
-    }, 0)
+    const totalCart = productsCart.reduce((total, item) => total + item.qty, 0)
 
     if (totalCart > 0) {
         badgeEl.classList.add('badge-show')
@@ -161,9 +149,7 @@ const handleCartUpdate = () => {
         })
         setupRemoveOfCart()
 
-        const totalPrice = productsCart.reduce((total, item) => {
-            return total + item.qty * item.price
-        }, 0)
+        const totalPrice = productsCart.reduce((total, item) => total + item.qty * item.price, 0)
         cartTotalValueEl.innerText = 'R$ ' + totalPrice.toLocaleString('pt-br', { minimumFractionDigits: 2 })
     } else {
         badgeEl.classList.remove('badge-show')
