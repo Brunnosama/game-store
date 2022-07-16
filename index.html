@@ -30,7 +30,7 @@
     </header>
     <main class="container">
         <h1>Produtos</h1>
-        
+
         <div id="groups-root">
             <i class="fa-solid fa-gamepad fa-flip loading-products"></i>
         </div>
@@ -98,38 +98,16 @@
         <button id="bttn-close-cart">
             <i class="fas fa-times"></i>
         </button>
-        <!-- <div id="empty-cart">
+        <div id="empty-cart">
             <i class="fas fa-shopping-bag"></i>
             <p class="h2">Sua sacola está vazia</p>
-        </div> -->
+        </div>
         <div id="full-cart">
             <p class="h2">Resumo do Pedido:</p>
-            <ul>
-                <li class="cart-item">
-                    <img src="assets/img/produtos/jogos/ps5-horizon-forbidden-west.jpg"
-                        alt="Horizon Forbidden West, para Playstation 5" width="70" height="70" />
-                    <div>
-                        <p class="h4">Horizon Forbidden West</p>
-                        <p class="price">R$ 270,00</p>
-                    </div>
-                    <input class="form-input" type="number" min="0" value="1" />
-                    <button class="fas fa-trash-alt"></button>
-                </li>
-                <li class="cart-item">
-                    <img src="assets/img/produtos/jogos/ps5-spider-man-miles-morales.jpg"
-                        alt="Spider-Man Miles Morales, para Playstation 5" width="70" height="70" />
-                    <div>
-                        <p class="h4">Spider-Man Miles Morales</p>
-                        <p class="price">R$ 250,00</p>
-                    </div>
-                    <input class="form-input" type="number" min="0" value="1" />
-                    <button class="fas fa-trash-alt"></button>
-                </li>
-                <li></li>
-            </ul>
+            <ul></ul>
             <div class="cart-total">
                 <p class="h2">Total</p>
-                <p>R$ 520,00</p>
+                <p id="cart-total-value">R$ 520,00</p>
             </div>
             <div>
                 <button class="bttn bttn-main-outline bttn-block" id="add-more">

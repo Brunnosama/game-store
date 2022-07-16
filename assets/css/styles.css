@@ -13,7 +13,7 @@
     --turq-color: #0affed;
     --mag-color: #f9f5ff;
     --lem-color: #faf33e;
-    --tklg-color: #b1fffa; 
+    --tklg-color: #b1fffa;
 }
 
 html {
@@ -85,13 +85,17 @@ a {
     font-size: 12px;
     border: 1px solid var(--ruby-color);
     color: var(--mag-color);
-    display: flex;
+    display: none;
     justify-content: center;
     align-items: center;
     border-radius: 100%;
     bottom: 5px;
     right: 5px;
     position: absolute;
+}
+
+.badge-show {
+    display: flex;
 }
 
 @media (min-width: 992px) {
@@ -218,10 +222,12 @@ h4,
     color: var(--mag-color);
     border: 1px solid var(--ruby-color);
 }
+
 .bttn-main:hover {
     background-color: var(--rblg-color);
     border-color: var(--rblg-color);
 }
+
 .bttn-main-outline {
     color: var(--ruby-color);
     border: 1px solid var(--ruby-color);
@@ -318,6 +324,7 @@ h4,
     /* display: none; */
     /* ALTERAR NO FUTURO */
 }
+
 .cart-sidebar-open {
     display: flex;
 }
@@ -332,12 +339,16 @@ h4,
 }
 
 #empty-cart {
-    display: flex;
+    display: none;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     flex-grow: 1;
 
+}
+
+#empty-cart.empty-cart-show {
+    display: flex;
 }
 
 #empty-cart .fa-shopping-bag {
@@ -352,11 +363,17 @@ h4,
 
 #full-cart {
     overflow: auto;
+    display: none;
+}
+
+#full-cart.full-cart-show {
+    display: block;
 }
 
 #full-cart ul {
     list-style: none;
 }
+
 #full-cart .bttn-main-outline {
     color: var(--turq-color);
     border: 1px solid var(--turq-color);
@@ -369,6 +386,7 @@ h4,
     border: 1px solid var(--turq-color);
     color: var(--jet-color);
 }
+
 #full-cart .bttn-main:hover {
     background-color: var(--tklg-color);
     border-color: var(--tklg-color);
@@ -405,19 +423,23 @@ h4,
     height: 38px;
     align-self: center;
 }
+
 .cart-total {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 12px 0;
 }
+
 .cart-total .h2 {
     margin: 0;
 }
+
 .cart-total p:last-child {
     color: var(--turq-color);
     font-size: 18px;
 }
+
 @media (min-width: 768px) {
     .cart-sidebar {
         width: 428px;
@@ -435,11 +457,12 @@ h4,
     font-size: 16px;
     padding: 9px;
 }
+
 /* ALERTS */
 .alert-error {
     background-color: var(--lem-color);
     color: var(--jet-color);
-    font-size:larger;
+    font-size: larger;
     border-radius: 20px;
     padding: 10px 15px;
     text-align: center;

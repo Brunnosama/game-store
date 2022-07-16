@@ -44,13 +44,20 @@ const fetchProducts = () => {
                 group.products.forEach(product => {
                     groupHTML +=
                         `<article class="card">
-                    <img src="${product.image}" alt="${product.imgAlt}" width="190" height="170" />
-                    <div class="card-content">
-                        <h3>${product.name}</h3>
-                        <p class="price">R$ ${product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</p>
-                        <button class="bttn bttn-main bttn-block bttn-add-cart" data-id="${product.id}">Adicionar</button>
-                    </div>
-                </article>`
+                            <img src="${product.image}" alt="${product.imgAlt}" width="190" height="170" />
+                            <div class="card-content">
+                                <h3>${product.name}</h3>
+                                <p class="price">R$ ${product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</p>
+                                <button
+                                    class="bttn bttn-main bttn-block bttn-add-cart"
+                                    data-id="${product.id}"
+                                    data-name="${product.name}"
+                                    data-image="${product.image}"
+                                    data-imgalt="${product.imgAlt/* no productsCart vai reconhecer o "imgalt" pq o data transforma td em minusculo */}" 
+                                    data-price="${product.price}"
+                                >Adicionar</button>
+                            </div>
+                        </article>`
                 })
                 groupHTML += '</div></section>'
                 groupsRootEl.innerHTML += groupHTML
@@ -66,13 +73,102 @@ fetchProducts()
 
 //PRODUTOS NO CARRINHO
 
-const productsCart = []
+let productsCart = []
 const addToCart = (event) => {
-    console.log('Vai Adicionar', event.target.dataset)
+    const product = event.target.dataset
+    /*Veja se o product está no array: Se não estiver, adicione ao array. Se já estiver, aumente o valor de qty*/
+
+    const index = productsCart.findIndex((item) => {
+        if (item.id == product.id) {
+            return true
+        }
+        return false
+    })
+    if (index == -1) {
+        productsCart.push({
+            ...product,
+            price: Number(product.price),
+            qty: 1
+        })
+    } else {
+        productsCart[index].qty++
+        /* "++" adiciona +1 à quantidade, igual a "+=" */
+    }
+    handleCartUpdate()
 }
+/* function aponta para onde ela é declarada/chamada */
+function removeOfCart () {
+    const {id} = this.dataset
+    productsCart = productsCart.filter ((product) => {
+        if (product.id != id) {
+            return true
+        }
+        return false
+    })
+    handleCartUpdate()
+}
+
+
 const setupAddToCart = () => {
     const bttnAddCartEls = document.querySelectorAll('.bttn-add-cart')
     bttnAddCartEls.forEach((bttn) => {
         bttn.addEventListener('click', addToCart)
     })
 }
+
+const setupRemoveOfCart = () => {
+    const bttnRemoveCartEls = document.querySelectorAll('.bttn-remove-cart')
+    bttnRemoveCartEls.forEach((bttn) => {
+        bttn.addEventListener('click', removeOfCart)
+    })
+}
+const handleCartUpdate = () => {
+    const badgeEl = document.querySelector('#bttn-cart .badge')
+    const emptyCartEl = document.querySelector('#empty-cart')
+    const fullCartEl = document.querySelector('#full-cart')
+    const cartItensParent = fullCartEl.querySelector('ul')
+    const cartTotalValueEl = document.querySelector('#cart-total-value')
+    const totalCart = productsCart.reduce((total, item) => {
+        return total + item.qty
+    }, 0)
+
+    if (totalCart > 0) {
+        badgeEl.classList.add('badge-show')
+        badgeEl.innerText = totalCart
+        fullCartEl.classList.add('full-cart-show')
+        emptyCartEl.classList.remove('empty-cart-show')
+        cartItensParent.innerHTML = ('')
+        productsCart.forEach((product) => {
+            cartItensParent.innerHTML +=
+                `<li class="cart-item" >
+                    <img src="${product.image}" alt="${product.imgalt /*dataset transformou imgAlt em imgalt*/}" width="70" height="70" />
+                    <div>
+                        <p class="h4">${product.name}</p>
+                        <p class="price">R$ ${product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</p>
+                    </div>
+                    <input class="form-input" type="number" min="0" value="${product.qty}" />
+                    <button 
+                        class="bttn-remove-cart"
+                        data-id="${product.id}"
+                        data-name="${product.name}"
+                        data-image="${product.image}"
+                        data-imgalt="${product.imgalt/*alterado pelo primeiro dataset*/}" 
+                        data-price="${product.price}"
+                    >
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </li >`
+        })
+        setupRemoveOfCart()
+
+        const totalPrice = productsCart.reduce((total, item) => {
+            return total + item.qty * item.price
+        }, 0)
+        cartTotalValueEl.innerText = 'R$ ' + totalPrice.toLocaleString('pt-br', { minimumFractionDigits: 2 })
+    } else {
+        badgeEl.classList.remove('badge-show')
+        emptyCartEl.classList.add('empty-cart-show')
+        fullCartEl.classList.remove('full-cart-show')
+    }
+}
+handleCartUpdate()
