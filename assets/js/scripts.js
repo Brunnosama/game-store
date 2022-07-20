@@ -2,7 +2,8 @@
 
 const cartSidebar = document.querySelector('.cart-sidebar') /* var declarada globalmente */
 
-function openSidebar() {
+function openSidebar(event) {
+    event.stopPropagation()
     cartSidebar.classList.add('cart-sidebar-open')
 }
 
@@ -27,6 +28,8 @@ bttnCloseCart.addEventListener('click', closeSidebar)/* executa uma função de 
 
 const addMore = document.getElementById('add-more')
 addMore.addEventListener('click', closeSidebar)
+document.addEventListener('click', closeSidebar)
+cartSidebar.addEventListener('click', event => event.stopPropagation())
 
 //BUSCAR PRODUTOS
 
@@ -136,10 +139,10 @@ const setupCartEvents = () => {
         input.addEventListener('change', handleUpdateQty)
     })
 }
-const KeyCart = '@whazaa/productsCart'
+const keyCart = '@whazaa/productsCart'
 const handleCartUpdate = (renderItens = true) => {
     //COLOCAR OS ITENS NO STORAGE
-    localStorage.setItem(KeyCart, JSON.stringify(productsCart))
+    localStorage.setItem(keyCart, JSON.stringify(productsCart))
     const badgeEl = document.querySelector('#bttn-cart .badge')
     const emptyCartEl = document.querySelector('#empty-cart')
     const fullCartEl = document.querySelector('#full-cart')
@@ -185,7 +188,7 @@ const handleCartUpdate = (renderItens = true) => {
 
 
 const initCart = () => {
-    const savedProducts = localStorage.getItem(KeyCart)
+    const savedProducts = localStorage.getItem(keyCart)
     if (savedProducts) {
         productsCart = JSON.parse(savedProducts)
     }
