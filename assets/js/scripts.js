@@ -106,13 +106,37 @@ const setupAddToCart = () => {
     })
 }
 
-const setupRemoveOfCart = () => {
+const handleKeydown = event =>{
+    if (event.key == '-' || event.key == '.' ) {
+      event.preventDefault()  
+    }
+}
+const handleUpdateQty = (event) => {
+    const { id } = event.target.dataset
+    const qty = parseInt(event.target.value)
+    if (qty > 0) {
+    const index = productsCart.findIndex(item => item.id == id)
+    productsCart[index].qty = qty
+    handleCartUpdate(false)
+} else {
+    productsCart = productsCart.filter((product) => product.id != id)
+}
+    handleCartUpdate()
+}
+        
+const setupCartEvents = () => {
     const bttnRemoveCartEls = document.querySelectorAll('.bttn-remove-cart')
     bttnRemoveCartEls.forEach((bttn) => {
         bttn.addEventListener('click', removeOfCart)
     })
+    const inputsQtyEl = document.querySelectorAll('.input-qty-cart')
+    inputsQtyEl.forEach((input) => {
+        input.addEventListener('keydown', handleKeydown)
+        input.addEventListener('keyup', handleUpdateQty )
+        input.addEventListener('change', handleUpdateQty )
+    })
 }
-const handleCartUpdate = () => {
+const handleCartUpdate = (renderItens = true) => {
     const badgeEl = document.querySelector('#bttn-cart .badge')
     const emptyCartEl = document.querySelector('#empty-cart')
     const fullCartEl = document.querySelector('#full-cart')
@@ -125,29 +149,27 @@ const handleCartUpdate = () => {
         badgeEl.innerText = totalCart
         fullCartEl.classList.add('full-cart-show')
         emptyCartEl.classList.remove('empty-cart-show')
-        cartItensParent.innerHTML = ('')
-        productsCart.forEach((product) => {
-            cartItensParent.innerHTML +=
-                `<li class="cart-item" >
-                    <img src="${product.image}" alt="${product.imgalt /*dataset transformou imgAlt em imgalt*/}" width="70" height="70" />
-                    <div>
-                        <p class="h4">${product.name}</p>
-                        <p class="price">R$ ${product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</p>
-                    </div>
-                    <input class="form-input" type="number" min="0" value="${product.qty}" />
-                    <button 
-                        class="bttn-remove-cart"
-                        data-id="${product.id}"
-                        data-name="${product.name}"
-                        data-image="${product.image}"
-                        data-imgalt="${product.imgalt/*alterado pelo primeiro dataset*/}" 
-                        data-price="${product.price}"
-                    >
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                </li >`
-        })
-        setupRemoveOfCart()
+        if (renderItens == true) {
+            cartItensParent.innerHTML = ('')
+            productsCart.forEach((product) => {
+                cartItensParent.innerHTML +=
+                    `<li class="cart-item" >
+                        <img src="${product.image}" alt="${product.imgalt /*dataset transformou imgAlt em imgalt*/}" width="70" height="70" />
+                        <div>
+                            <p class="h4">${product.name}</p>
+                            <p class="price">R$ ${product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</p>
+                        </div>
+                        <input class="form-input input-qty-cart" type="number" min="0" value="${product.qty}" data-id="${product.id}" />
+                        <button 
+                            class="bttn-remove-cart"
+                            data-id="${product.id}"
+                        >
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </li >`
+            })
+            setupCartEvents()
+        }
 
         const totalPrice = productsCart.reduce((total, item) => total + item.qty * item.price, 0)
         cartTotalValueEl.innerText = 'R$ ' + totalPrice.toLocaleString('pt-br', { minimumFractionDigits: 2 })
