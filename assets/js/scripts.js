@@ -123,8 +123,8 @@ const handleUpdateQty = (event) => {
         handleCartUpdate(false)
     } else {
         productsCart = productsCart.filter((product) => product.id != id)
+        handleCartUpdate()
     }
-    handleCartUpdate()
 }
 
 const setupCartEvents = () => {
@@ -155,8 +155,8 @@ const handleCartUpdate = (renderItens = true) => {
         badgeEl.innerText = totalCart
         fullCartEl.classList.add('full-cart-show')
         emptyCartEl.classList.remove('empty-cart-show')
-        if (renderItens == true) {
-            cartItensParent.innerHTML = ('')
+        if (renderItens) {
+            cartItensParent.innerHTML = ''
             productsCart.forEach((product) => {
                 cartItensParent.innerHTML +=
                     `<li class="cart-item" >
@@ -173,9 +173,9 @@ const handleCartUpdate = (renderItens = true) => {
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </li >`
-            })
-            setupCartEvents()
-        }
+              })
+              setupCartEvents()
+          }
 
         const totalPrice = productsCart.reduce((total, item) => total + item.qty * item.price, 0)
         cartTotalValueEl.innerText = 'R$ ' + totalPrice.toLocaleString('pt-br', { minimumFractionDigits: 2 })
