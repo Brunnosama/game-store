@@ -106,24 +106,24 @@ const setupAddToCart = () => {
     })
 }
 
-const handleKeydown = event =>{
-    if (event.key == '-' || event.key == '.' ) {
-      event.preventDefault()  
+const handleKeydown = event => {
+    if (event.key == '-' || event.key == '.') {
+        event.preventDefault()
     }
 }
 const handleUpdateQty = (event) => {
     const { id } = event.target.dataset
     const qty = parseInt(event.target.value)
     if (qty > 0) {
-    const index = productsCart.findIndex(item => item.id == id)
-    productsCart[index].qty = qty
-    handleCartUpdate(false)
-} else {
-    productsCart = productsCart.filter((product) => product.id != id)
-}
+        const index = productsCart.findIndex(item => item.id == id)
+        productsCart[index].qty = qty
+        handleCartUpdate(false)
+    } else {
+        productsCart = productsCart.filter((product) => product.id != id)
+    }
     handleCartUpdate()
 }
-        
+
 const setupCartEvents = () => {
     const bttnRemoveCartEls = document.querySelectorAll('.bttn-remove-cart')
     bttnRemoveCartEls.forEach((bttn) => {
@@ -132,11 +132,14 @@ const setupCartEvents = () => {
     const inputsQtyEl = document.querySelectorAll('.input-qty-cart')
     inputsQtyEl.forEach((input) => {
         input.addEventListener('keydown', handleKeydown)
-        input.addEventListener('keyup', handleUpdateQty )
-        input.addEventListener('change', handleUpdateQty )
+        input.addEventListener('keyup', handleUpdateQty)
+        input.addEventListener('change', handleUpdateQty)
     })
 }
+const KeyCart = '@whazaa/productsCart'
 const handleCartUpdate = (renderItens = true) => {
+    //COLOCAR OS ITENS NO STORAGE
+    localStorage.setItem(KeyCart, JSON.stringify(productsCart))
     const badgeEl = document.querySelector('#bttn-cart .badge')
     const emptyCartEl = document.querySelector('#empty-cart')
     const fullCartEl = document.querySelector('#full-cart')
@@ -179,4 +182,13 @@ const handleCartUpdate = (renderItens = true) => {
         fullCartEl.classList.remove('full-cart-show')
     }
 }
-handleCartUpdate()
+
+
+const initCart = () => {
+    const savedProducts = localStorage.getItem(KeyCart)
+    if (savedProducts) {
+        productsCart = JSON.parse(savedProducts)
+    }
+    handleCartUpdate()
+}
+initCart()
