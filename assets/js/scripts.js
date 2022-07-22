@@ -198,3 +198,31 @@ const initCart = () => {
     handleCartUpdate()
 }
 initCart()
+
+/* FORM CHECKOUT */
+const handleCheckoutSubmit = event => {
+    event.preventDefault()
+    if (productsCart.length == 0) {
+        alert('Nenhum produto no Carrinho.')
+        return
+    }
+    let text = "Confira o pedido\n\n---------------------------------------\n\n"
+    productsCart.forEach((product) => {
+        text += `*${product.qty}x ${product.name}* - R${product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}\n`
+    })
+    const totalPrice = productsCart.reduce((total, item) => total + item.qty * item.price, 0)
+    text += `\n*Taxa de Entrega:* A Combinar\n*Total: R$ ${totalPrice.toLocaleString('pt-br', { minimumFractionDigits: 2 })}*`
+    text += '\n\n---------------------------------------\n\n'
+    text += `*${event.target.elements['input-name'].value}*`
+    text += `\n${event.target.elements['input-phone'].value}\n\n`
+    const complement = event.target.elements['input-complement'].value ? ` - ${event.target.elements['input-complement'].value}` : ''
+
+    text += `${event.target.elements['input-address'].value}, ${event.target.elements['input-number'].value}${complement}\n`
+    text += `${event.target.elements['input-neighborhood'].value}, ${event.target.elements['input-city'].value}\n`
+    text += `${event.target.elements['input-cep'].value}`
+    text = encodeURI(text)
+    const subdomain = window.innerWidth > 768 ? 'web':'api'
+    window.open(`https://${subdomain}.whatsapp.com/send/?phone=5581999999999&text=${text}`, "_blank")
+}
+const formCheckoutEl = document.querySelector('#form-checkout')
+formCheckoutEl?.addEventListener('submit', handleCheckoutSubmit)
