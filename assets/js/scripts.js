@@ -33,8 +33,8 @@ cartSidebar.addEventListener('click', event => event.stopPropagation())
 
 //BUSCAR PRODUTOS
 
+const groupsRootEl = document.querySelector('#groups-root')
 const fetchProducts = () => {
-    const groupsRootEl = document.querySelector('#groups-root')
     fetch('/products.json')
         .then(response => response.json())
         .then(body => {
@@ -69,10 +69,13 @@ const fetchProducts = () => {
         })
         .catch((error) => {
             console.log(error)
-            groupsRootEl.innerHTML = '<p class="alert-error"><strong>Desculpe, houve uma falha ao carregar nossos produtos. Por favor, verifique sua conexão e recarregue a página.</strong></p>'
+            groupsRootEl.innerHTML =
+                '<p class="alert-error"><strong>Desculpe, houve uma falha ao carregar nossos produtos. Por favor, verifique sua conexão e recarregue a página.</strong></p>'
         })
 }
-fetchProducts()
+if (groupsRootEl) {
+    fetchProducts()
+}
 
 //PRODUTOS NO CARRINHO
 
@@ -173,9 +176,9 @@ const handleCartUpdate = (renderItens = true) => {
                             <i class="fas fa-trash-alt"></i>
                         </button>
                     </li >`
-              })
-              setupCartEvents()
-          }
+            })
+            setupCartEvents()
+        }
 
         const totalPrice = productsCart.reduce((total, item) => total + item.qty * item.price, 0)
         cartTotalValueEl.innerText = 'R$ ' + totalPrice.toLocaleString('pt-br', { minimumFractionDigits: 2 })
