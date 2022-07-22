@@ -210,19 +210,35 @@ const handleCheckoutSubmit = event => {
     productsCart.forEach((product) => {
         text += `*${product.qty}x ${product.name}* - R${product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}\n`
     })
+
+    const inputEls = event.target.elements
     const totalPrice = productsCart.reduce((total, item) => total + item.qty * item.price, 0)
+    const complement = inputEls['input-complement'].value ? ` - ${inputEls['input-complement'].value}` : ''
+
     text += `\n*Taxa de Entrega:* A Combinar\n*Total: R$ ${totalPrice.toLocaleString('pt-br', { minimumFractionDigits: 2 })}*`
     text += '\n\n---------------------------------------\n\n'
-    text += `*${event.target.elements['input-name'].value}*`
-    text += `\n${event.target.elements['input-phone'].value}\n\n`
-    const complement = event.target.elements['input-complement'].value ? ` - ${event.target.elements['input-complement'].value}` : ''
+    text += `*${inputEls['input-name'].value}*`
+    text += `\n${inputEls['input-phone'].value}\n\n`
+    text += `${inputEls['input-address'].value}, ${inputEls['input-number'].value}${complement}\n`
+    text += `${inputEls['input-neighborhood'].value}, ${inputEls['input-city'].value}\n`
+    text += `${inputEls['input-cep'].value}`
 
-    text += `${event.target.elements['input-address'].value}, ${event.target.elements['input-number'].value}${complement}\n`
-    text += `${event.target.elements['input-neighborhood'].value}, ${event.target.elements['input-city'].value}\n`
-    text += `${event.target.elements['input-cep'].value}`
     text = encodeURI(text)
-    const subdomain = window.innerWidth > 768 ? 'web':'api'
+
+    const subdomain = window.innerWidth > 768 ? 'web' : 'api'
     window.open(`https://${subdomain}.whatsapp.com/send/?phone=5581999999999&text=${text}`, "_blank")
 }
 const formCheckoutEl = document.querySelector('#form-checkout')
 formCheckoutEl?.addEventListener('submit', handleCheckoutSubmit)
+
+/* MASKS */
+
+const inputPhoneEl = document.querySelector('#input-phone')
+IMask(inputPhoneEl, {
+    mask:'(00) 00000-0000'
+})
+
+const inputCepEl = document.querySelector('#input-cep')
+IMask(inputCepEl, {
+    mask:'00000-000'
+})
