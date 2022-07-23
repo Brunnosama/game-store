@@ -1,6 +1,6 @@
 //ABRE SIDEBAR
 
-const cartSidebar = document.querySelector('.cart-sidebar') /* var declarada globalmente */
+const cartSidebar = document.querySelector('.cart-sidebar')
 
 function openSidebar(event) {
     event.stopPropagation()
@@ -12,19 +12,11 @@ function closeSidebar() {
     cartSidebar.classList.remove('cart-sidebar-open')
 }
 
-// document.getElementById('bttn-cart').onclick = openSidebar 
-// no ex acima apenas uma função pode ser executada por vez
-
-/* document.getElementById('bttn-cart').addEventListener('click', function () {
-    cartSidebar.classList.add('cart-sidebar-open')) */
-// acima vc pode jogar a função direto (e nem precisa nomear)
-
 const bttnOpenCart = document.getElementById('bttn-cart')
-//pode criar uma função com o caminho para melhorar a organização
 bttnOpenCart.addEventListener('click', openSidebar)
 
 const bttnCloseCart = document.getElementById('bttn-close-cart')
-bttnCloseCart.addEventListener('click', closeSidebar)/* executa uma função de callback*/
+bttnCloseCart.addEventListener('click', closeSidebar)
 
 const addMore = document.getElementById('add-more')
 addMore.addEventListener('click', closeSidebar)
@@ -41,8 +33,6 @@ const fetchProducts = () => {
 
             groupsRootEl.innerHTML = ''
             body.groups.forEach((group) => {
-                // groupsRootEl.innerHTML = groupsRootEl.innerHTML + group.name 
-                /*sempre que a variável for receber ela mesma, pode colocar o sinal de '+' antes do '=' para concatenar */
                 let groupHTML = `<section><h2>${group.name}</h2><div class="products-grid">`
                 group.products.forEach(product => {
                     groupHTML +=
@@ -56,7 +46,7 @@ const fetchProducts = () => {
                                     data-id="${product.id}"
                                     data-name="${product.name}"
                                     data-image="${product.image}"
-                                    data-imgalt="${product.imgAlt/* no productsCart vai reconhecer o "imgalt" pq o data transforma td em minusculo */}" 
+                                    data-imgalt="${product.imgAlt}" 
                                     data-price="${product.price}"
                                 >Adicionar</button>
                             </div>
@@ -82,7 +72,6 @@ if (groupsRootEl) {
 let productsCart = []
 const addToCart = (event) => {
     const product = event.target.dataset
-    /*Veja se o product está no array: Se não estiver, adicione ao array. Se já estiver, aumente o valor de qty*/
 
     const index = productsCart.findIndex((item) => item.id == product.id)
     if (index == -1) {
@@ -93,25 +82,21 @@ const addToCart = (event) => {
         })
     } else {
         productsCart[index].qty++
-        /* "++" adiciona +1 à quantidade, igual a "+=" */
     }
     handleCartUpdate()
 }
-/* function aponta para onde ela é declarada/chamada */
+
 function removeOfCart() {
     const { id } = this.dataset
     productsCart = productsCart.filter((product) => product.id != id)
     handleCartUpdate()
 }
-
-
 const setupAddToCart = () => {
     const bttnAddCartEls = document.querySelectorAll('.bttn-add-cart')
     bttnAddCartEls.forEach((bttn) => {
         bttn.addEventListener('click', addToCart)
     })
 }
-
 const handleKeydown = event => {
     if (event.key == '-' || event.key == '.') {
         event.preventDefault()
@@ -129,7 +114,6 @@ const handleUpdateQty = (event) => {
         handleCartUpdate()
     }
 }
-
 const setupCartEvents = () => {
     const bttnRemoveCartEls = document.querySelectorAll('.bttn-remove-cart')
     bttnRemoveCartEls.forEach((bttn) => {
@@ -163,7 +147,7 @@ const handleCartUpdate = (renderItens = true) => {
             productsCart.forEach((product) => {
                 cartItensParent.innerHTML +=
                     `<li class="cart-item" >
-                        <img src="${product.image}" alt="${product.imgalt /*dataset transformou imgAlt em imgalt*/}" width="70" height="70" />
+                        <img src="${product.image}" alt="${product.imgalt}" width="70" height="70" />
                         <div>
                             <p class="h4">${product.name}</p>
                             <p class="price">R$ ${product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}</p>
@@ -179,7 +163,6 @@ const handleCartUpdate = (renderItens = true) => {
             })
             setupCartEvents()
         }
-
         const totalPrice = productsCart.reduce((total, item) => total + item.qty * item.price, 0)
         cartTotalValueEl.innerText = 'R$ ' + totalPrice.toLocaleString('pt-br', { minimumFractionDigits: 2 })
     } else {
@@ -199,10 +182,9 @@ const initCart = () => {
 }
 initCart()
 
-/* CEP API */
+/* CEP SERVICE */
 
 function limpa_formulário_cep() {
-    //Limpa valores do formulário de cep.
     document.getElementById('input-address').value=("");
     document.getElementById('input-neighborhood').value=("");
     document.getElementById('input-city').value=("");
@@ -210,56 +192,36 @@ function limpa_formulário_cep() {
 
 function meu_callback(conteudo) {
 if (!("erro" in conteudo)) {
-    //Atualiza os campos com os valores.
     document.getElementById('input-address').value=(conteudo.logradouro);
     document.getElementById('input-neighborhood').value=(conteudo.bairro);
     document.getElementById('input-city').value=(conteudo.localidade);
-} //end if.
+}
 else {
-    //CEP não Encontrado.
     limpa_formulário_cep();
     alert("CEP não encontrado.");
 }
 }
 
 function pesquisacep(valor) {
-
-//Nova variável "cep" somente com dígitos.
 var cep = valor.replace(/\D/g, '');
 var cep = valor.replace('-', '')
-
-//Verifica se campo cep possui valor informado.
 if (cep != "") {
-
-    //Expressão regular para validar o CEP.
     var validacep = /^[0-9]{8}$/;
-
-    //Valida o formato do CEP.
     if(validacep.test(cep)) {
-
-        //Preenche os campos com "..." enquanto consulta webservice.
         document.getElementById('input-address').value="...";
         document.getElementById('input-neighborhood').value="...";
         document.getElementById('input-city').value="...";
-
-        //Cria um elemento javascript.
         var script = document.createElement('script');
-
-        //Sincroniza com o callback.
         script.src = 'https://viacep.com.br/ws/'+ cep + '/json/?callback=meu_callback';
-
-        //Insere script no documento e carrega o conteúdo.
         document.body.appendChild(script);
 
-    } //end if.
+    }
     else {
-        //cep é inválido.
         limpa_formulário_cep();
         alert("Formato de CEP inválido.");
     }
-} //end if.
+}
 else {
-    //cep sem valor, limpa formulário.
     limpa_formulário_cep();
 }
 };

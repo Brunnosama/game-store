@@ -512,7 +512,7 @@ h4,
 
 /*CHANGE WEBKIT AUTOFILL */
 input:-webkit-autofill,
-input:-webkit-autofill:hover, 
+input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active,
 textarea:-webkit-autofill,
@@ -525,5 +525,5 @@ select:-webkit-autofill:focus,
 select:-webkit-autofill:active {
     color: var(--mag-color);
     transition: background-color 5000s ease-in-out 0s;
-    -webkit-text-fill-color:var(--mag-color);
+    -webkit-text-fill-color: var(--mag-color);
 }
