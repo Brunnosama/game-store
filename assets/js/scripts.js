@@ -233,7 +233,7 @@ const handleCheckoutSubmit = event => {
         alert('Nenhum produto no Carrinho.')
         return
     }
-    let text = "Confira o pedido\n\n---------------------------------------\n\n"
+    let text = "Confira o pedido\n\n-------------------------------------\n\n"
     productsCart.forEach((product) => {
         text += `*${product.qty}x ${product.name}* - R${product.price.toLocaleString('pt-br', { minimumFractionDigits: 2 })}\n`
     })
@@ -243,7 +243,7 @@ const handleCheckoutSubmit = event => {
     const complement = inputEls['input-complement'].value ? ` - ${inputEls['input-complement'].value}` : ''
 
     text += `\n*Taxa de Entrega:* A Combinar\n*Total: R$ ${totalPrice.toLocaleString('pt-br', { minimumFractionDigits: 2 })}*`
-    text += '\n\n---------------------------------------\n\n'
+    text += '\n\n-------------------------------------\n\n'
     text += `*${inputEls['input-name'].value}*`
     text += `\n${inputEls['input-phone'].value}\n\n`
     text += `${inputEls['input-address'].value}, ${inputEls['input-number'].value}${complement}\n`
