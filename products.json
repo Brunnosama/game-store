@@ -27,9 +27,9 @@
                 },
                 {
                     "id": "30705717-854a-489e-a3a6-fb338c32492a",
-                    "name": "Uncharted Coleção Legado dos Ladrões Remasterizado",
+                    "name": "Uncharted Legado dos Ladrões",
                     "image": "assets/img/produtos/jogos/ps5-uncharted-colection-remasterizado.jpg",
-                    "imgAlt": "Uncharted Coleção Legado dos Ladrões Remasterizado, para Playstation 5",
+                    "imgAlt": "Uncharted Legado dos Ladrões, para Playstation 5",
                     "price": 200
                 }
             ]
@@ -40,9 +40,9 @@
             "products": [
                 {
                     "id": "535a96ec-08b1-4a27-9b5d-27e3d268bd61",
-                    "name": "Controle sem fio DualSense",
+                    "name": "Controle DualSense",
                     "image": "assets/img/produtos/acessorios/ps5-controle-dualsense-branco.jpg",
-                    "imgAlt": "Controle sem fio DualSense para Playstation 5",
+                    "imgAlt": "Controle DualSense para Playstation 5",
                     "price": 400
                 },
                 {
@@ -54,16 +54,16 @@
                 },
                 {
                     "id": "b6c5e1a2-6485-4ee3-8d9a-3766d6937d87",
-                    "name": "Headset sem fio Pulse 3D",
+                    "name": "Headset Pulse 3D",
                     "image": "assets/img/produtos/acessorios/ps5-headset-sem-fio-pulse-3d.jpg",
-                    "imgAlt":"Headset sem fio Pulse 3D para Playstation 5",
+                    "imgAlt":"Headset Pulse 3D para Playstation 5",
                     "price": 483
                 },
                 {
                     "id": "fb3a040c-15a4-4a69-8860-eeb086fb3480",
-                    "name": "Memória SSD WD_Black SN850 1TB",
+                    "name": "Memória SSD WD_Black 1TB",
                     "image": "assets/img/produtos/acessorios/ps-wd-black-sn850-ssd-1tb.jpg",
-                    "imgAlt":"Memória SSD Wd Black SN850 de 1 Terabyte para Playstation 5",
+                    "imgAlt":"Memória SSD Wd Black de 1 Terabyte para Playstation 5",
                     "price": 920
                 }
             ]
@@ -74,9 +74,9 @@
             "products": [
                 {
                     "id": "73f0ad09-7321-472b-abff-fe8623a403c4",
-                    "name": "Console PlayStation 5 Edição Digital",
+                    "name": "Console PlayStation 5 Digital",
                     "image": "assets/img/produtos/consoles/ps5-console-edicao-digital.jpg",
-                    "imgAlt":"Console PlayStation 5 Edição Digital",
+                    "imgAlt":"Console PlayStation 5 Digital",
                     "price": 4599
                 },
                 {
