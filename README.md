@@ -36,9 +36,9 @@
 </div>
 <div align="center">
 <p float="left" align="middle">
-  <img align="top" src="assets/img/readme/whazaa-desktop-1.JPG" width="442" />
-  <img align="top" src="assets/img/readme/whazaa-mobile-1.JPG" width="115" /> 
-  <img align="top" src="assets/img/readme/whazaa-desktop-2.JPG" width="442" />
+  <img align="top" src="assets/img/readme/whazaa-desktop-1.JPG" width="440" />
+  <img align="top" src="assets/img/readme/whazaa-mobile-1.JPG" width="110" /> 
+  <img align="top" src="assets/img/readme/whazaa-desktop-2.JPG" width="440" />
 </p>
 </div>
 
