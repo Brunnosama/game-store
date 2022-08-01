@@ -10,7 +10,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Brunnosama/whazaa-game-store">
-    <img src="assets/img/whazaa-game-store-white.svg" alt="Logo Whazaa! Games">
+    <img src="assets/img/whazaa-game-store-white.svg" alt="Logo Whazaa! Games" width="130">
   </a>
   <br/>
 
@@ -36,9 +36,9 @@
 </div>
 <div align="center">
 <p float="left" align="middle">
-  <img align="top" src="assets/img/readme/whazaa-desktop-1.JPG" width="100" />
-  <img align="top" src="assets/img/readme/whazaa-mobile-1.JPG" width="100" /> 
-  <img align="top" src="assets/img/readme/whazaa-desktop-2.JPG" width="100" />
+  <img align="top" src="assets/img/readme/whazaa-desktop-1.JPG" width="442" />
+  <img align="top" src="assets/img/readme/whazaa-mobile-1.JPG" width="115" /> 
+  <img align="top" src="assets/img/readme/whazaa-desktop-2.JPG" width="442" />
 </p>
 </div>
 
